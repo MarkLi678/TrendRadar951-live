@@ -943,43 +943,33 @@ def calculate_news_weight(
 def matches_word_groups(
     title: str, word_groups: List[Dict], filter_words: List[str]
 ) -> bool:
-    """检查标题是否匹配词组规则"""
-    # 如果没有配置词组，则匹配所有标题（支持显示全部新闻）
+    """检查标题是否匹配词组规则，兼容 title 不是字符串的情况"""
     if not word_groups:
         return True
 
-    title_lower = title.lower()
+    # 类型安全防护：确保 title 为 str
+    if not isinstance(title, str):
+        title_lower = str(title).lower()
+    else:
+        title_lower = title.lower()
 
     # 过滤词检查
-    if any(filter_word.lower() in title_lower for filter_word in filter_words):
+    if any(str(filter_word).lower() in title_lower for filter_word in filter_words):
         return False
 
-    # 词组匹配检查
+    # 匹配词组
     for group in word_groups:
-        required_words = group["required"]
-        normal_words = group["normal"]
+        required_words = group.get("required", [])
+        normal_words = group.get("normal", [])
 
-        # 必须词检查
         if required_words:
-            all_required_present = all(
-                req_word.lower() in title_lower for req_word in required_words
-            )
-            if not all_required_present:
+            if not all(str(req_word).lower() in title_lower for req_word in required_words):
                 continue
-
-        # 普通词检查
         if normal_words:
-            any_normal_present = any(
-                normal_word.lower() in title_lower for normal_word in normal_words
-            )
-            if not any_normal_present:
+            if not any(str(n).lower() in title_lower for n in normal_words):
                 continue
-
         return True
-
     return False
-
-
 def format_time_display(first_time: str, last_time: str) -> str:
     """格式化时间显示"""
     if not first_time:
