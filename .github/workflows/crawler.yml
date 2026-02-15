@@ -10,6 +10,11 @@ on:
 permissions:
   contents: write
 
+# Avoid backlog: keep only the latest scheduled/manual run.
+concurrency:
+  group: hot-news-crawler
+  cancel-in-progress: true
+
 jobs:
   crawl:
     runs-on: ubuntu-latest
