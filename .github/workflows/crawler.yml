@@ -65,8 +65,30 @@ jobs:
         run: python main.py
 
       - name: Commit and push if changes
+        env:
+          # Fine-grained PAT with repo-only access (recommended). Add it in repo Settings → Secrets and variables → Actions.
+          # If empty, workflow will try to push using the default GITHUB_TOKEN.
+          TREND_RADAR_PAT: ${{ secrets.TREND_RADAR_PAT }}
         run: |
+          set -e
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update by GitHub Actions at $(TZ=Asia/Shanghai date)" && git push)
+
+          # No changes → no-op
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Auto update by GitHub Actions at $(TZ=Asia/Shanghai date)"
+
+          # Prefer PAT if provided (avoids GITHUB_TOKEN permission quirks / push rejections)
+          if [ -n "${TREND_RADAR_PAT}" ]; then
+            echo "Pushing with PAT (TREND_RADAR_PAT)"
+            git remote set-url origin "https://x-access-token:${TREND_RADAR_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          else
+            echo "Pushing with default token (GITHUB_TOKEN)"
+          fi
+
+          git push origin HEAD
