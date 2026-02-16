@@ -4,44 +4,44 @@ eth
 sol
 usdt
 usdc
+circle
+tether
+木头姐
+马斯克
 
 ai
+openclaw
 chatgpt
 gemini
 cursor
 claude code
+智谱
+glm
+minimax
+DeepSeek
+豆包
+seedance
+宇树科技
+
+国际局势
 中国
 美国
 俄罗斯
 日本
 欧盟
 乌克兰
+
+贵金属
 黄金
 白银
+铜
 
-
-DeepSeek
-梁文锋
-
+新能源
 比亚迪
 宁德时代
 
 大疆
 DJI
-
-宇树
-王兴兴
-
-智元
-灵犀
-稚晖君
-彭志辉
-
-黑神话
-冯骥
-
-影之刃零
-梁其伟
 
 !车
 !餐
@@ -72,6 +72,7 @@ sora
 claude
 Anthropic
 
+apple
 iphone
 ipad
 mac
