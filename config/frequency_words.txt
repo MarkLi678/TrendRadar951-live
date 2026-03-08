@@ -21,15 +21,11 @@ minimax
 DeepSeek
 豆包
 seedance
-宇树科技
 
-国际局势
 伊朗
 中国
 美国
 俄罗斯
-日本
-欧盟
 乌克兰
 
 贵金属
@@ -38,24 +34,16 @@ seedance
 铜
 
 新能源
-比亚迪
-宁德时代
 
 大疆
-DJI
 
 !车
 !餐
 !gay
 
-字节
-bytedance
-张一鸣
 
-特斯拉
-马斯克
+
 微软
-Microsoft
 英伟达
 NVIDIA
 黄仁勋
@@ -66,39 +54,27 @@ google
 gemini
 deepmind
 
-chatgpt
-openai
-sora
-
 claude
 Anthropic
 
 apple
-iphone
-ipad
-mac
-ios
 
 ai
 人工智能
 自动驾驶
 人形机器人
 
-芯片
-光刻机
 大湾区
 关税战
 新能源
 科技
 核能
-水电站
-雅鲁藏布江
-新质生产力
 探索火星
 
 政策
 规划
 社融
+金融
 cpi
 ppi
 m2
